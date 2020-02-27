@@ -1,0 +1,125 @@
+.container{
+  max-width: none;
+}
+.container video{
+  position: relative;
+  left: 27vw;
+}
+.chatbox{
+  height: 350px;
+  width: 400px;
+  position: absolute;
+  top: 25vh;
+  right: 1vw;
+  -webkit-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
+  -moz-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
+  box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
+  z-index: 1000;
+  background-color: white;
+}
+
+.chatbox_upbar{
+  width: 100%;
+  height: 10%;
+}
+.dropdown_btn{
+  position: relative;
+  left: 2%;
+}
+.dropdown_btn,
+.dropdown_btn::after,
+.dropdown_btn::before{
+  width: 20px;
+  height: 2px;
+  background-color: black;
+  display: inline-block;
+
+}
+
+.dropdown_btn::after,.dropdown_btn::before{
+  position: absolute;
+  content: "";
+}
+.dropdown_btn::before{
+  top: 3px;
+}
+.dropdown_btn::after{
+  top: -3px;
+}
+.exit_btn{
+  position:relative;
+  left: 94%;
+  top: -16px;
+}
+.exit_btn::after,
+.exit_btn::before{
+  background: black;
+  width: 20px;
+  height: 2px;
+  content: "";
+}
+.exit_btn::after{
+  transform: rotate(45deg);
+  position: absolute;
+}
+.exit_btn::before{
+  transform: rotate(-45deg);
+  position: absolute;
+}
+.mini_btn{
+  position: absolute;
+  background: black;
+  width: 20px;
+  height: 2px;
+  top: 25px;
+  left: 85%;
+}
+.chatbox_midbar{
+  width: 100%;
+  height: 75%;
+  background-color: orange;
+}
+.chatarea{
+  float: left;
+  width: 90%;
+  background: white;
+  height: 96%;
+  margin-left: 1%;
+  margin-top: 1%;
+}
+.chatarea_side{
+  float: right;
+  width: 7%;
+  background: white;
+  height: 96%;
+  margin-top: 1%;
+  overflow: hidden;
+}
+.indicator{
+  width: 4px;
+  height: 100%;
+  background-color: red;
+  float: left;
+}
+.chatarea_btn,
+.pnotes_btn{
+  width: 130px;
+  height: 30px;
+  color: white;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  transform: rotate(90deg);
+  position: absolute;
+  left: 81%;
+  border-radius: 10%;
+}
+.chatarea_btn{
+  background-color: red;
+  top: 26%;
+}
+.pnotes_btn{
+  background-color: #29a8cf;
+  bottom: 31.5%;
+}
