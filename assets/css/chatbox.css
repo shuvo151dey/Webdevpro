@@ -49,7 +49,12 @@ input[type="text"]{
   display: inline-block;
 
 }
-
+#con{
+  position: absolute;
+    top: 4px;
+    left: 10%;
+    transition: all .5s;
+}
 .dropdown_btn::after,.dropdown_btn::before{
   position: absolute;
   content: "";
@@ -91,7 +96,8 @@ input[type="text"]{
 .chatbox_midbar{
   width: 100%;
   height: 75%;
-  background-color: orange;
+  background-color: #f56e6e;
+  transition: all .5s;
 }
 .chatarea{
   float: left;
@@ -112,8 +118,9 @@ input[type="text"]{
 .indicator{
   width: 4px;
   height: 100%;
-  background-color: red;
+  background: red;
   float: left;
+  transition: all .5s;
 }
 .chatarea_btn,
 .pnotes_btn{
@@ -127,13 +134,14 @@ input[type="text"]{
   transform: rotate(90deg);
   position: absolute;
   left: 80%;
+  cursor: pointer;
 }
 .chatarea_btn{
   background-color: red;
   top: 26%;
 }
 .pnotes_btn{
-  background-color: #29a8cf;
+  background-color: #0465b5;
   bottom: 31%;
 }
 .chatbox_downbar{
@@ -184,7 +192,7 @@ form{
   width: 30px;
   height: 30px;
   margin-top: 10px;
-  
+
 }
 input[type="text"]{
   width: 75%;
