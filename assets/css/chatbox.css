@@ -1,16 +1,30 @@
+body{
+  overflow-x: hidden;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+input[type="text"]{
+ -webkit-appearance: none;
+ border: none;
+ border-bottom: 1px solid black;
+}
 .container{
   max-width: none;
 }
 .container video{
   position: relative;
-  left: 27vw;
+  left: 13vw;
+  -webkit-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
+  -moz-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
+  box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
 }
 .chatbox{
   height: 350px;
   width: 400px;
   position: absolute;
-  top: 25vh;
-  right: 1vw;
+  top: 15vh;
+  right: 10vw;
   -webkit-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
   -moz-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
   box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
@@ -86,14 +100,14 @@
   height: 96%;
   margin-left: 1%;
   margin-top: 1%;
+  background-color: #eeeeee;
+  border-radius: 1%;
 }
 .chatarea_side{
   float: right;
   width: 7%;
   background: white;
-  height: 96%;
-  margin-top: 1%;
-  overflow: hidden;
+  height: 100%;
 }
 .indicator{
   width: 4px;
@@ -103,8 +117,8 @@
 }
 .chatarea_btn,
 .pnotes_btn{
-  width: 130px;
-  height: 30px;
+  width: 134px;
+  height: 23px;
   color: white;
   text-align: center;
   font-size: 13px;
@@ -112,8 +126,7 @@
   font-weight: bold;
   transform: rotate(90deg);
   position: absolute;
-  left: 81%;
-  border-radius: 10%;
+  left: 80%;
 }
 .chatarea_btn{
   background-color: red;
@@ -121,5 +134,60 @@
 }
 .pnotes_btn{
   background-color: #29a8cf;
-  bottom: 31.5%;
+  bottom: 31%;
+}
+.chatbox_downbar{
+  width: 100%;
+  height: 15%;
+}
+.comment_insight,
+.commentarea,
+.post_btn{
+  height: 14%;
+  position: absolute;
+  cursor: pointer;
+}
+.comment_insight{
+  width: 10%;
+  left: 0;
+}
+.comment_insight img{
+  height: 22px;
+  width: 22px;
+  margin: 10px;
+}
+
+.commentarea{
+  width: 80%;
+  left: 10%;
+  border:none;
+  outline: none;
+
+}
+
+.post_btn{
+  width: 10%;
+  height: 15%;
+  right: 0%;
+  background: white;
+  border: none;
+}
+.post_btn:hover{
+  background: white;
+  border: none;
+}
+form{
+  margin: 0;
+  height: 100%;
+}
+.post_btn img{
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  
+}
+input[type="text"]{
+  width: 75%;
+  font-size: 16px;
+
 }
