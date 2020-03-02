@@ -123,6 +123,10 @@
 		dd.style.opacity = "0";
 		dd.style.transform = "translateY(-10px)";
 		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "all";
+		chat2.style.display = "none";
+		note2.style.display = "none";
+		log.style.display = "none";
+		sign.style.display = "none";
 	}
 	note.onclick = function(){
 		ind.style.background = "#0465b5";
@@ -131,14 +135,26 @@
 		dd.style.opacity = "0";
 		dd.style.transform = "translateY(-10px)";
 		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "all";
+		chat2.style.display = "none";
+		note2.style.display = "none";
+		log.style.display = "none";
+		sign.style.display = "none";
 	}
 	ddb.onclick = function(){
 		if (dd.style.opacity == "1"){
 			dd.style.opacity = "0";
 			dd.style.transform = "translateY(-10px)";
+			chat2.style.display = "none";
+			note2.style.display = "none";
+			log.style.display = "none";
+			sign.style.display = "none";
 		} else {
 			dd.style.opacity = "1";
 			dd.style.transform = "translateY(0)";
+			chat2.style.display = "block";
+			note2.style.display = "block";
+			log.style.display = "block";
+			sign.style.display = "block";
 		}
 	}
 	chat2.onclick = chat.onclick
@@ -149,7 +165,10 @@
 		dd.style.transform = "translateY(-10px)";
 		ind.style.background = "#6b07ff";
 		bg.style.background = "#281740";
-
+		chat2.style.display = "none";
+		note2.style.display = "none";
+		log.style.display = "none";
+		sign.style.display = "none";
 		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "none";
 		//console.log("strike");
 	}
@@ -159,7 +178,10 @@
 		dd.style.transform = "translateY(-10px)";
 		ind.style.background = "#6b07ff";
 		bg.style.background = "#281740";
-
+		chat2.style.display = "none";
+		note2.style.display = "none";
+		log.style.display = "none";
+		sign.style.display = "none";
 		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "none";
 		//console.log("strike");
 	}
