@@ -55,10 +55,15 @@
 	</video>
 	<div class="chatbox">
 		<div class="chatbox_upbar">
-			<div class="dropdown_btn"></div>
+			<div class="dropdown_btn" id="ddb"><div class="dropdown_logo"></div></div>
 			<div class="con" id="con">Chat</div>
 			<div class="exit_btn"></div>
 			<div class="mini_btn"></div>
+			<ul class="dropdownbox" id="dd">
+				<li class="dd_opt" id="chat_b2">Chat</li>
+				<li class="dd_opt" id="note_b2">Notes</li>
+				<li class="dd_opt" id="sl">Login/SignUp</li>
+			</ul>
 		</div>
 		<div class="chatbox_midbar" id="bg">
 			<div class="chatarea"></div>
@@ -84,17 +89,48 @@
 	var note = document.getElementById("note_b");
 	var bg = document.getElementById("bg");
 	var con = document.getElementById("con");
+	var ddb = document.getElementById("ddb");
+	var dd = document.getElementById("dd");
+	var chat2 = document.getElementById("chat_b2");
+	var note2 = document.getElementById("note_b2");
+	var sl = document.getElementById("sl");
 	chat.onclick = function(){
 		ind.style.background = "red";
 		bg.style.background = "#f56e6e";
 		con.innerHTML = "Chat";
+		dd.style.opacity = "0";
+		dd.style.transform = "translateY(-10px)";
+		document.getElementsByClassName("chatbox_downbar")[0].style.filter = "blur(0)";
 	}
 	note.onclick = function(){
 		ind.style.background = "#0465b5";
 		bg.style.background = "#3966e3";
 		con.innerHTML = "Notes";
+		dd.style.opacity = "0";
+		dd.style.transform = "translateY(-10px)";
+		document.getElementsByClassName("chatbox_downbar")[0].style.filter = "blur(0)";
 	}
+	ddb.onclick = function(){
+		if (dd.style.opacity == "1"){
+			dd.style.opacity = "0";
+			dd.style.transform = "translateY(-10px)";
+		} else {
+			dd.style.opacity = "1";
+			dd.style.transform = "translateY(0)";
+		}
+	}
+	chat2.onclick = chat.onclick
+	note2.onclick = note.onclick
+	sl.onclick = function(){
+		con.innerHTML = "Login/SignUp";
+		dd.style.opacity = "0";
+		dd.style.transform = "translateY(-10px)";
+		ind.style.background = "#6b07ff";
+		bg.style.background = "#281740";
 
+		document.getElementsByClassName("chatbox_downbar")[0].style.filter = "blur(5px)";
+		//console.log("strike");
+	}
 </script>
 
 
