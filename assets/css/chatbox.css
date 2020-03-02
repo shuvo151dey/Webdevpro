@@ -37,33 +37,38 @@ input[type="text"]{
   height: 10%;
 }
 .dropdown_btn{
-  position: relative;
-  left: 2%;
+  width: 10%;
+  padding-left: 1%;
+  cursor: pointer;
+  z-index: 0;
 }
-.dropdown_btn,
-.dropdown_btn::after,
-.dropdown_btn::before{
+.dropdown_logo{
+  position: relative;
+}
+.dropdown_logo,
+.dropdown_logo::after,
+.dropdown_logo::before{
   width: 20px;
   height: 2px;
   background-color: black;
   display: inline-block;
-
+  z-index: -1;
 }
-#con{
-  position: absolute;
-    top: 4px;
-    left: 10%;
-    transition: all .5s;
-}
-.dropdown_btn::after,.dropdown_btn::before{
+.dropdown_logo::after,.dropdown_logo::before{
   position: absolute;
   content: "";
 }
-.dropdown_btn::before{
+.dropdown_logo::before{
   top: 3px;
 }
-.dropdown_btn::after{
+.dropdown_logo::after{
   top: -3px;
+}
+#con{
+  position: absolute;
+  top: 4px;
+  left: 10%;
+  transition: all .5s;
 }
 .exit_btn{
   position:relative;
@@ -92,6 +97,25 @@ input[type="text"]{
   height: 2px;
   top: 25px;
   left: 85%;
+}
+.dropdownbox{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 30%;
+  position: absolute;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all .5s;
+}
+
+.dd_opt{
+  padding-left: 0;
+  text-decoration: none;
+  list-style: none;
+  background: white;
+  cursor: pointer;
 }
 .chatbox_midbar{
   width: 100%;
