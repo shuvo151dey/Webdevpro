@@ -62,11 +62,21 @@
 			<ul class="dropdownbox" id="dd">
 				<li class="dd_opt" id="chat_b2">Chat</li>
 				<li class="dd_opt" id="note_b2">Notes</li>
-				<li class="dd_opt" id="sl">Login/SignUp</li>
+				<li class="dd_opt" id="log">Login</li>
+				<li class="dd_opt" id="sign">Sign Up</li>
 			</ul>
 		</div>
 		<div class="chatbox_midbar" id="bg">
-			<div class="chatarea"></div>
+			<div class="chatarea">
+				<div class="main1">
+    			<p class="welcome">Please fill the following form:</p>
+    			<form class="form1" action="login.php" method="POST">
+      			<input class="username" type="text" align="center"  name="user" placeholder="USERNAME">
+      			<input class="pass" type="password" align="center" name="pass" placeholder="PASSWORD">
+      			<button class="submit" align="center" type="submit" name="submit">Login</button>
+					</form>
+    		</div>
+			</div>
 			<div class="chatarea_side">
 				<div class="indicator" id="indicator"></div>
 				<div class="chatarea_btn" id="chat_b">Chat</div>
@@ -74,7 +84,15 @@
 			</div>
 		</div>
 		<div class="chatbox_downbar">
-			<div class="comment_insight"><img src="images/plus.png" /></div>
+			<ul class="insight_list" id="il">
+				<li class="reaction"><img src="images/tick2.png" class="react"></li>
+				<li class="reaction"><img src="images/cross.png" class="react"></li>
+				<li class="reaction"><img src="images/heart.png" class="react"></li>
+				<li class="reaction"><img src="images/pencil.png" class="react"></li>
+				<li class="reaction"><img src="images/question.png" class="react"></li>
+				<li class="reaction"><img src="images/react1.png" class="react"></li>
+			</ul>
+			<div class="comment_insight" id="ilb">+</div>
 			<form action="javascript_video.html" method="post">
 				<input class="commentarea" type="text" name="comment" placeholder="Comment here">
 				<button class="post_btn" type="submit"><img src="images/tick.png"></button>
@@ -93,14 +111,18 @@
 	var dd = document.getElementById("dd");
 	var chat2 = document.getElementById("chat_b2");
 	var note2 = document.getElementById("note_b2");
-	var sl = document.getElementById("sl");
+	var log = document.getElementById("log");
+	var sign = document.getElementById("sign");
+	var il = document.getElementById("il");
+	var ilb = document.getElementById("ilb");
+	var react = document.getElementsByClassName("react");
 	chat.onclick = function(){
 		ind.style.background = "red";
 		bg.style.background = "#f56e6e";
 		con.innerHTML = "Chat";
 		dd.style.opacity = "0";
 		dd.style.transform = "translateY(-10px)";
-		document.getElementsByClassName("chatbox_downbar")[0].style.filter = "blur(0)";
+		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "all";
 	}
 	note.onclick = function(){
 		ind.style.background = "#0465b5";
@@ -108,7 +130,7 @@
 		con.innerHTML = "Notes";
 		dd.style.opacity = "0";
 		dd.style.transform = "translateY(-10px)";
-		document.getElementsByClassName("chatbox_downbar")[0].style.filter = "blur(0)";
+		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "all";
 	}
 	ddb.onclick = function(){
 		if (dd.style.opacity == "1"){
@@ -121,15 +143,56 @@
 	}
 	chat2.onclick = chat.onclick
 	note2.onclick = note.onclick
-	sl.onclick = function(){
-		con.innerHTML = "Login/SignUp";
+	log.onclick = function(){
+		con.innerHTML = "Login";
 		dd.style.opacity = "0";
 		dd.style.transform = "translateY(-10px)";
 		ind.style.background = "#6b07ff";
 		bg.style.background = "#281740";
 
-		document.getElementsByClassName("chatbox_downbar")[0].style.filter = "blur(5px)";
+		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "none";
 		//console.log("strike");
+	}
+	sign.onclick = function(){
+		con.innerHTML = "Sign Up";
+		dd.style.opacity = "0";
+		dd.style.transform = "translateY(-10px)";
+		ind.style.background = "#6b07ff";
+		bg.style.background = "#281740";
+
+		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "none";
+		//console.log("strike");
+	}
+	ilb.onclick = function(){
+		if(il.style.opacity == "0"){
+			il.style.opacity = "1";
+		} else {
+			il.style.opacity = "0";
+		}
+	}
+	react[0].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[0].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[1].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[1].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[2].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[2].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[3].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[3].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[4].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[4].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[5].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[5].src + "' >";
+		il.style.opacity = "0";
 	}
 </script>
 
