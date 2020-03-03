@@ -68,9 +68,9 @@
 		</div>
 		<div class="chatbox_midbar" id="bg">
 			<div class="chatarea">
-				<div class="main1">
+				<div class="main1" id="main1">
     			<p class="welcome">Please fill the following form:</p>
-    			<form class="form1" action="login.php" method="POST">
+    			<form class="form1" action="createaccount.php" method="POST">
       			<input class="username" type="text" align="center"  name="user" placeholder="USERNAME">
       			<input class="pass" type="password" align="center" name="pass" placeholder="PASSWORD">
       			<button class="submit" align="center" type="submit" name="submit">Login</button>
@@ -123,10 +123,7 @@
 		dd.style.opacity = "0";
 		dd.style.transform = "translateY(-10px)";
 		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "all";
-		chat2.style.display = "none";
-		note2.style.display = "none";
-		log.style.display = "none";
-		sign.style.display = "none";
+		 document.getElementById("main1").style.display='none';
 	}
 	note.onclick = function(){
 		ind.style.background = "#0465b5";
@@ -135,26 +132,15 @@
 		dd.style.opacity = "0";
 		dd.style.transform = "translateY(-10px)";
 		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "all";
-		chat2.style.display = "none";
-		note2.style.display = "none";
-		log.style.display = "none";
-		sign.style.display = "none";
+		 document.getElementById("main1").style.display='none';
 	}
 	ddb.onclick = function(){
 		if (dd.style.opacity == "1"){
 			dd.style.opacity = "0";
 			dd.style.transform = "translateY(-10px)";
-			chat2.style.display = "none";
-			note2.style.display = "none";
-			log.style.display = "none";
-			sign.style.display = "none";
 		} else {
 			dd.style.opacity = "1";
 			dd.style.transform = "translateY(0)";
-			chat2.style.display = "block";
-			note2.style.display = "block";
-			log.style.display = "block";
-			sign.style.display = "block";
 		}
 	}
 	chat2.onclick = chat.onclick
@@ -165,10 +151,7 @@
 		dd.style.transform = "translateY(-10px)";
 		ind.style.background = "#6b07ff";
 		bg.style.background = "#281740";
-		chat2.style.display = "none";
-		note2.style.display = "none";
-		log.style.display = "none";
-		sign.style.display = "none";
+        document.getElementById("main1").style.display='none';
 		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "none";
 		//console.log("strike");
 	}
@@ -178,10 +161,7 @@
 		dd.style.transform = "translateY(-10px)";
 		ind.style.background = "#6b07ff";
 		bg.style.background = "#281740";
-		chat2.style.display = "none";
-		note2.style.display = "none";
-		log.style.display = "none";
-		sign.style.display = "none";
+        document.getElementById("main1").style.display='block';
 		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "none";
 		//console.log("strike");
 	}

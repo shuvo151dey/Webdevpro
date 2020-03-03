@@ -264,9 +264,24 @@ input[type="password"]:focus{
   width: 100%;
   display: block;
 }
+.loda{
+  display: none;
+  opacity: 0;
+}
 
-
-.main1 {
+.main1 {display: none;
+  background-color: #FFFFFF;
+  height: 100%;
+}
+.main3 {display: none;
+  background-color: #FFFFFF;
+  height: 100%;
+}
+.main2 {display: none;
+  background-color: #FFFFFF;
+  height: 100%;
+}
+.main4 {display: none;
   background-color: #FFFFFF;
   height: 100%;
 }
@@ -331,6 +346,23 @@ input[type="password"]:focus{
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
+.submit1 {
+  cursor: pointer;
+  border-radius: 0.1em;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+  border: 0;
+  width: 30%;
+  margin-left: 35%!important;
+  line-height: 30px!important;
+  height: 25%!important;
+  padding: 0!important;
+  margin-top: 5%!important;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0 auto;
+  font-size: 18px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
 a {
   text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
   color: #E1BEE7;
@@ -344,11 +376,3 @@ a {
   cursor:pointer;
 }
 
-
-.submit1:hover{
-  color:#E040FB;
-  background:#fff;
-  border:solid;
-  border-radius: 0.1em;
-  border-color:linear-gradient(to right, #9C27B0, #E040FB);
-}

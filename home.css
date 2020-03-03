@@ -1,0 +1,142 @@
+body {
+        background-image: linear-gradient(to bottom right, #6a2eea,#BDF1ED);
+            margin: 0px 0px;}
+ .main1 {
+        background-color: #FFFFFF;
+        width:100%;
+        height: 78px;
+        margin:0px 0px;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.4);
+        display: inline-block;
+  
+    }
+    .photo{border-radius: 5px;
+    	display: inline-block;
+        float: left;
+        margin-top: 13px;
+        margin-left: 20px;
+
+    }
+    .welcome {display: inline-block;
+        color: #8C55AA;
+        font-family: 'Bungee Shade', cursive;
+        font-weight: bold;
+        font-size: 30px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+        float: left;
+        margin-top: 0px;
+        margin-left: 12px;
+    }
+    .submit {margin-top: 20px;
+        margin-right: 12px;
+      cursor: pointer;
+        border-radius: 0.1em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+      display: inline-block;
+      float: right; 
+        font-size: 18px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        
+    }
+   .submit:hover{
+        color:#E040FB;
+        background:#fff;
+        border:solid;
+        border-radius: 0.1em;
+        border-color:linear-gradient(to right, #9C27B0, #E040FB); 
+
+    }
+    .form{display:inline-block;
+         float: right;}
+.topic {
+    width:76%;
+    height: auto;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.2);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+.comment {
+    width:76%;
+    height: auto;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.2);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+
+
+.displaya{
+margin: 20px 30px;}
+
+ .submit1 {
+      cursor: pointer;
+        border-radius: 0.1em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 35%;
+        font-size: 18px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        
+    }
+   .main2 {width: 76%;
+    height: auto;
+        background-color:#fff;
+        margin: 2.5em auto;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.4);
+        display: inline-block;
+        margin-left: 120px;
+    }
+    .topic:hover{
+background: rgba(136, 126, 126, 0.28);
+border: 2px solid rgba(0, 0, 0, 0.16);}
+
+.comment:hover{
+background: rgba(136, 126, 126, 0.28);
+border: 2px solid rgba(0, 0, 0, 0.16);}
+
+.submit1:hover{
+        color:#E040FB;
+        background:#fff;
+        border:solid;
+        border-radius: 0.1em;
+        border-color:linear-gradient(to right, #9C27B0, #E040FB); 
+
+    }

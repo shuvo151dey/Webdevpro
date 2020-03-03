@@ -1,0 +1,401 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Demo</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/chatbox.css" />
+
+		<link rel='stylesheet' type='text/css' href='assets/css/player.css' />
+
+		<script src="assets/js/jquery.js"></script>
+		<script src='assets/js/javascript.js'></script>
+
+
+	</head>
+	<body>
+
+
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class="logo">Annoto</a>
+					<nav id="nav">
+						<a href="index.html">Home</a>
+						<a href="generic.html">Edtech</a>
+						<a href="generic.html">Corporate</a>
+						<a href="generic.html">Portals</a>
+						<a href="generic.html">About us</a>
+						<button id="myBtn" class="button alt">Request a demo</button>
+					</nav>
+				</div>
+			</header>
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+
+
+			<section id="banner" >
+				<div class="inner">
+
+					<p>“ I never teach my pupils. I only attempt to  provide the conditions in which they can  learn.”
+						<br/> Albert Einstein</p>
+				</div>
+			</section>
+
+		<!--Video player-->
+
+
+<div class="container">
+	<video width="600" height="355" controls>
+		<source src="videos/video1.mp4" type="video/mp4">
+		<source src="movie.webm" type="video/webm">
+	</video>
+	<div class="chatbox">
+		<div class="chatbox_upbar">
+			<div class="dropdown_btn" id="ddb"><div class="dropdown_logo"></div></div>
+			<div class="con" id="con">Chat</div>
+			<div class="exit_btn"></div>
+			<div class="mini_btn"></div>
+			<ul class="dropdownbox" id="dd">
+				<li class="dd_opt" id="chat_b2">Chat</li>
+				<li class="dd_opt" id="note_b2">Notes</li>
+				<li class="dd_opt" id="log">Login</li>
+				<li class="dd_opt" id="sign">Sign Up</li>
+			</ul>
+		</div>
+		<div class="chatbox_midbar" id="bg">
+			<div class="chatarea">
+				<div class="main1" id="main1">
+    			<p class="welcome">Please fill the following form:</p>
+    			<form class="form1" action="createaccount.php" method="POST">
+      			<input class="username" type="text" align="center"  name="user" placeholder="USERNAME">
+      			<input class="pass" type="password" align="center" name="pass" placeholder="PASSWORD">
+      			<button class="submit" align="center" type="submit" name="submit">Signup</button>
+					</form>
+    		</div>
+    		<div class="main2" id="main2">
+    			<p class="welcome">Please Login</p>
+    			<form class="form1" action="login.php" method="POST">
+      			<input class="username" type="text" align="center"  name="user" placeholder="USERNAME">
+      			<input class="pass" type="password" align="center" name="pass" placeholder="PASSWORD">
+      			<button class="submit1" align="center" type="submit" name="submit">Login</button>
+					</form>
+    		</div>
+    		<div class="main3" id="main3">
+    			<h4 class="content"> Hi <?php echo($_SESSION['signuser']); ?>, your account is created successfully,please login to enjoy mashbook!</h4>
+
+			</div>
+			<div class="main4" id="main4">
+    			<h4 class="content"> Please Login to Add Notes</h4>
+
+			</div>
+			<div class="chatarea_side">
+				<div class="indicator" id="indicator"></div>
+				<div class="chatarea_btn" id="chat_b">Chat</div>
+				<div class="pnotes_btn" id="note_b">Notes</div>
+			</div>
+		</div>
+		<div class="chatbox_downbar">
+			<ul class="insight_list" id="il">
+				<li class="reaction"><img src="images/tick2.png" class="react"></li>
+				<li class="reaction"><img src="images/cross.png" class="react"></li>
+				<li class="reaction"><img src="images/heart.png" class="react"></li>
+				<li class="reaction"><img src="images/pencil.png" class="react"></li>
+				<li class="reaction"><img src="images/question.png" class="react"></li>
+				<li class="reaction"><img src="images/react1.png" class="react"></li>
+			</ul>
+			<div class="comment_insight" id="ilb">+</div>
+			<form action="javascript_video.html" method="post">
+				<input class="commentarea" type="text" name="comment" placeholder="Comment here">
+				<button class="post_btn" type="submit"><img src="images/tick.png"></button>
+			</form>
+		</div>
+</div>
+</div>
+<div id="php" class="loda"><?php echo isset(($_SESSION['signuser'])); ?></div>
+<div id="phpname" class="loda"><?php echo ($_SESSION['signuser']); ?></div>
+<div id="phplogin" class="loda"><?php echo ($_SESSION['loginuser']); ?></div>
+<div id="loginbool" class="loda"><?php echo isset(($_SESSION['loginuser'])); ?></div>
+<script type="text/javascript">
+	var ind = document.getElementById("indicator");
+	var chat = document.getElementById("chat_b");
+	var note = document.getElementById("note_b");
+	var bg = document.getElementById("bg");
+	var con = document.getElementById("con");
+	var ddb = document.getElementById("ddb");
+	var dd = document.getElementById("dd");
+	var chat2 = document.getElementById("chat_b2");
+	var note2 = document.getElementById("note_b2");
+	var log = document.getElementById("log");
+	var sign = document.getElementById("sign");
+	var il = document.getElementById("il");
+	var ilb = document.getElementById("ilb");
+	var react = document.getElementsByClassName("react");
+	var userbool=document.getElementById("php").innerHTML;
+	var user=document.getElementById("phpname").innerHTML;
+	var loginuser=document.getElementById("phplogin").innerHTML;
+	var loginbool=document.getElementById("loginbool").innerHTML;
+	if (loginuser=="empty1") {
+		alert("Wrong Username Or Password");
+	}
+//<br>
+//<b>Notice</b>:  Undefined index: user in <b>C:\MAMP\htdocs\Webdevpro-master\loda.php</b> on line <b>115</b><br>
+   
+	chat.onclick = function(){
+		ind.style.background = "red";
+		bg.style.background = "#f56e6e";
+		con.innerHTML = "Chat";
+		dd.style.opacity = "0";
+		dd.style.transform = "translateY(-10px)";
+		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "all";
+		 document.getElementById("main1").style.display='none';
+		 document.getElementById("main2").style.display='none';
+		document.getElementById("main3").style.display='none';
+		document.getElementById("main4").style.display='none';
+	}
+	note.onclick = function(){
+		ind.style.background = "#0465b5";
+		bg.style.background = "#3966e3";
+		con.innerHTML = "Notes";
+		dd.style.opacity = "0";
+		dd.style.transform = "translateY(-10px)";
+		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "all";
+		 document.getElementById("main1").style.display='none';
+		 document.getElementById("main2").style.display='none';
+		document.getElementById("main4").style.display='none';
+		document.getElementById("main3").style.display='none';
+			if (loginbool!="1" || loginuser=="empty1") {
+			document.getElementById("main4").style.display='block';
+		}
+	}
+	ddb.onclick = function(){
+		if (dd.style.opacity == "1"){
+			dd.style.opacity = "0";
+			dd.style.transform = "translateY(-10px)";
+		} else {
+			dd.style.opacity = "1";
+			dd.style.transform = "translateY(0)";
+		}
+	}
+	chat2.onclick = chat.onclick
+	note2.onclick = note.onclick
+	log.onclick = function(){
+		con.innerHTML = "Login";
+		dd.style.opacity = "0";
+		dd.style.transform = "translateY(-10px)";
+		ind.style.background = "#6b07ff";
+		bg.style.background = "#281740";
+        document.getElementById("main1").style.display='none';
+		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "none";
+		document.getElementById("main2").style.display='block';
+		document.getElementById("main3").style.display='none';
+		document.getElementById("main4").style.display='none';
+	
+		//console.log("strike");
+	}
+	sign.onclick = function(){
+		con.innerHTML = "Sign Up";
+		dd.style.opacity = "0";
+		dd.style.transform = "translateY(-10px)";
+		ind.style.background = "#6b07ff";
+		bg.style.background = "#281740";
+        document.getElementById("main1").style.display='block';
+		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "none";
+		document.getElementById("main2").style.display='none';
+		document.getElementById("main4").style.display='none';
+		if (userbool=="1") {
+			document.getElementById("main3").style.display='block';
+			document.getElementById("main1").style.display='none';
+		}
+		//console.log("strike");
+	}
+	ilb.onclick = function(){
+		if(il.style.opacity == "0"){
+			il.style.opacity = "1";
+		} else {
+			il.style.opacity = "0";
+		}
+	}
+	react[0].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[0].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[1].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[1].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[2].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[2].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[3].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[3].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[4].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[4].src + "' >";
+		il.style.opacity = "0";
+	}
+	react[5].onclick = function(){
+		ilb.innerHTML = "<img src='" + react[5].src + "' >";
+		il.style.opacity = "0";
+	}
+</script>
+
+
+
+		<div class="valueone">
+			<header>
+				<p>Value Proposition</p>
+			</header>
+		</div>
+		<div class="my_card">
+			<div class="row">
+				<div class="column">
+
+				  <div class="card">
+					  <h2>Learning Experience</h2>
+					  <p>
+						Users can Q&A on specific moments in the video, mark keynotes and engage in discussion
+					  </p>
+				  </div>
+				</div>
+				<div class="column">
+				  <div class="card">.
+					<h2>Call to Action</h2>
+					<p>
+						Create engaging quizzes and remarks at video keynotes
+					</p>
+				  </div>
+				</div>
+				<div class="column">
+				  <div class="card">.
+					<h2>Analytics and Insight</h2>
+					<p>
+						Discover how users interact with your video content and with each other. At what moments they are most engaged and where they struggle
+					</p>
+				  </div>
+				</div>
+				<div class="column">
+				  <div class="card">
+					<h2>Management Tools</h2>
+					<p>
+						Organization aware moderation and role based user access control
+					</p>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div id="myModal" class="modal" data-backdrop="false">
+
+				  <div class="modal-content">
+					  <span class="close">&times;</span>
+						<div class="container">
+						  <form id="contact" action="" method="post">
+							<h3>Contact Us</h3>
+
+							<fieldset>
+							  <input placeholder="Your name" type="text" tabindex="1" required>
+							</fieldset>
+							<fieldset>
+							  <input placeholder="Your Email Address" type="email" tabindex="2" required>
+							</fieldset>
+							<fieldset>
+							  <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+							</fieldset>
+							<fieldset>
+							  <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+						  </fieldset>
+							<fieldset>
+							  <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+							</fieldset>
+
+							<fieldset>
+							  <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Send Message</button>
+							</fieldset>
+
+						  </form>
+						</div>
+				  </div>
+
+			  </div>
+
+
+
+
+
+
+		<footer class="footer-distributed">
+
+			<div class="footer-left">
+		  <img src="img/logo.png">
+				<h3>Annoto</h3>
+
+				<p class="footer-links">
+					<a href="#">Home</a>
+					|
+					<a href="#">The Team</a>
+					|
+					<a href="#">About</a>
+					|
+					<a href="#">Contact</a>
+				</p>
+
+				<p class="footer-company-name">© 2019 center for educational technology.</p>
+			</div>
+
+			<div class="footer-center">
+				<div>
+					<i class="fa fa-map-marker"></i>
+					  <p><span>Center for Education Technology</span>
+						 IIT Kharagpur</span>
+						, West Bengal - 721302</p>
+				</div>
+
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+91 11-27782183</p>
+				</div>
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="niteshjha@iitkgp.ac.in">support@something.com</a></p>
+				</div>
+			</div>
+			<div class="footer-right">
+				<p class="footer-company-about">
+					<span>About the company</span>
+					Video as a social sense.</p>
+				<div class="footer-icons">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-instagram"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-youtube"></i></a>
+				</div>
+			</div>
+		</footer>
+
+
+
+
+
+
+
+		<!-- Scripts -->
+	<!--		<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script> -->
+			<script src="assets/js/drag.js"></script>
+			<script src="assets/js/jquery.js"></script>
+			<script src='assets/js/javascript.js'></script>
+
+	</body>
+</html>

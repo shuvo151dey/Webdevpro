@@ -1,6 +1,4 @@
 <?php
-
-
 $username = 'root';
 $password = 'root';
 $db = 'mydb';
@@ -20,13 +18,13 @@ $comment=mysqli_real_escape_string($link, $_POST['comment']);
 $website=mysqli_real_escape_string($link, $_POST['website']);
 $name=mysqli_real_escape_string($link, $_POST['name']);
 $email=mysqli_real_escape_string($link, $_POST['email']);
-$qa="INSERT INTO `contact` (name,website,comment,email,phone)
+$qa="INSERT INTO `contactus` (name,website,comment,email,phone)
 VALUES ('$name','$website','$comment','$email','$phone')";
 if ($link->query($qa) === TRUE) {
     echo "Entered successfully";
 } else {
     echo "Error: " . $qa . "<br>" . $link->error;
 }
-
-
+header( "Location: http://localhost:8888/Webdevpro-master/generic.html" );
+die();
 ?>
