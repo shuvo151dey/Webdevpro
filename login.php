@@ -28,7 +28,7 @@ $num=mysqli_num_rows($result);
 if($num>=1){
 $_SESSION['loginuser']=$name;
 
-header('location:home.php');
+header('location:http://localhost:8888/Webdevpro-master/loda.php');
 }
 else{
 $_SESSION['loginuser']="empty1";

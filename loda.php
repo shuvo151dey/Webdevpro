@@ -37,6 +37,11 @@ session_start();
 					</nav>
 				</div>
 			</header>
+			<div id="php" class="loda"><?php echo isset(($_SESSION['signuser'])); ?></div>
+<div id="phpname" class="loda"><?php echo ($_SESSION['signuser']); ?></div>
+<div id="phplogin" class="loda"><?php echo ($_SESSION['loginuser']); ?></div>
+<div id="loginbool" class="loda"><?php echo isset(($_SESSION['loginuser'])); ?></div>
+
 			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
 
@@ -53,9 +58,9 @@ session_start();
 
 
 <div class="container">
-	<video width="600" height="355" controls>
-		<source src="videos/video1.mp4" type="video/mp4">
-		<source src="movie.webm" type="video/webm">
+	<video id="myVideo" width="600" height="355" controls>
+		<source src="video1.mp4" type="video/mp4" >
+		
 	</video>
 	<div class="chatbox">
 		<div class="chatbox_upbar">
@@ -73,34 +78,140 @@ session_start();
 		<div class="chatbox_midbar" id="bg">
 			<div class="chatarea">
 				<div class="main1" id="main1">
-    			<p class="welcome">Please fill the following form:</p>
-    			<form class="form1" action="createaccount.php" method="POST">
-      			<input class="username" type="text" align="center"  name="user" placeholder="USERNAME">
-      			<input class="pass" type="password" align="center" name="pass" placeholder="PASSWORD">
-      			<button class="submit" align="center" type="submit" name="submit">Signup</button>
+	    			<p class="welcome">Please fill the following form:</p>
+	    			<form class="form1" action="createaccount.php" method="POST">
+		      			<input class="username" type="text" align="center"  name="user" placeholder="USERNAME">
+		      			<input class="pass" type="password" align="center" name="pass" placeholder="PASSWORD">
+		      			<button class="submit" align="center" type="submit" name="submit">Signup</button>
 					</form>
-    		</div>
-    		<div class="main2" id="main2">
-    			<p class="welcome">Please Login</p>
-    			<form class="form1" action="login.php" method="POST">
-      			<input class="username" type="text" align="center"  name="user" placeholder="USERNAME">
-      			<input class="pass" type="password" align="center" name="pass" placeholder="PASSWORD">
-      			<button class="submit1" align="center" type="submit" name="submit">Login</button>
+	    		</div>
+	    		<div class="main2" id="main2">
+	    			<p class="welcome">Please Login</p>
+	    			<form class="form1" action="login.php" method="POST">
+		      			<input class="username" type="text" align="center"  name="user" placeholder="USERNAME">
+		      			<input class="pass" type="password" align="center" name="pass" placeholder="PASSWORD">
+		      			<button class="submit1" align="center" type="submit" name="submit">Login</button>
 					</form>
-    		</div>
-    		<div class="main3" id="main3">
-    			<h4 class="content"> Hi <?php echo($_SESSION['signuser']); ?>, your account is created successfully,please login to enjoy mashbook!</h4>
+	    		</div>
+	    		<div class="main3" id="main3">
+	    			<h4 class="contenty"> Hi <?php echo($_SESSION['signuser']); ?>, your account is created successfully,please login to add notes and comment</h4>
+				</div>
+				<div class="main4" id="main4">
+	    			<h4 class="contenty"> Please Login to Add Notes</h4>
+				</div>
+				<div class="main5" id="main5">
+					<form class="form1" action="logout.php" method="POST">
+					<button class="submit3" align="center" type="submit" name="submit">Logout</button></form>
+				</div>
+				<div class="main6" id="main6">
+					
+                 
+      <div class="displaya"></div>
+     
 
-			</div>
-			<div class="main4" id="main4">
-    			<h4 class="content"> Please Login to Add Notes</h4>
 
-			</div>
-			<div class="chatarea_side">
-				<div class="indicator" id="indicator"></div>
-				<div class="chatarea_btn" id="chat_b">Chat</div>
-				<div class="pnotes_btn" id="note_b">Notes</div>
-			</div>
+    
+<?php     //<textarea class="topic"  type="text" align="center" name="topic" placeholder="ADD TOPIC"></textarea>    ?>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {var usery=document.querySelector('#phplogin').innerText;
+	displaytopic(usery);
+  //setInterval(function(){displaytopic();}, 1000);
+
+
+$("#submitpost").click(function (argument) {
+	var vid = document.getElementById("myVideo");
+    var usery=document.querySelector('#phplogin').innerText;
+    var topic=$(".topic").val();
+    var id=0;
+    var currenttime=vid.currentTime;
+    var done=1;
+var secs = Math.round(currenttime);
+var hours = Math.floor(secs / (60 * 60));
+var divisor_for_minutes = secs % (60 * 60);
+var minutes = Math.floor(divisor_for_minutes / 60);
+var divisor_for_seconds = divisor_for_minutes % 60;
+var seconds = Math.ceil(divisor_for_seconds);
+var zero="0";
+if (hours<10) {
+var hour=hours.toString();
+hour=zero.concat(hour);	
+}
+else{
+	var hour=hours.toString();
+}
+if (minutes<10) {
+var minute=minutes.toString();
+minute=zero.concat(minute);	
+}
+else{
+	var minute=minutes.toString();
+}
+if (seconds<10) {
+var second=seconds.toString();
+second=zero.concat(second);	
+}
+else{
+	var second=seconds.toString();
+}
+var colon=":";
+var timemin=hour.concat(colon,minute,colon,second);
+
+
+ load_comment();
+
+ function load_comment()
+ {
+  $.ajax({
+   url:"ajaxy.php",
+   method:"POST",
+   data:{
+   	done:done,
+   	id:id,
+usery:usery,
+timemin:timemin,
+topic:topic
+   },
+   success:function(data)
+   {
+   displaytopic(usery);
+    $('.topic').val('');
+   }
+  })
+ }
+
+
+});
+
+
+});
+function displaytopic(usery) {
+	var display=1;
+	  $.ajax({
+   url:"ajaxy.php",
+   method:"POST",
+   data:{display:1,
+   	usery:usery
+   	},
+   success:function(d)
+   {
+   $(".displaya").html(d);
+   }
+  })
+	
+}  
+
+
+</script>
+
+
+				</div>
+
+		</div>
+		<div class="chatarea_side">
+			<div class="indicator" id="indicator"></div>
+			<div class="chatarea_btn" id="chat_b">Chat</div>
+			<div class="pnotes_btn" id="note_b">Notes</div>
 		</div>
 		<div class="chatbox_downbar">
 			<ul class="insight_list" id="il">
@@ -112,17 +223,14 @@ session_start();
 				<li class="reaction"><img src="images/react1.png" class="react"></li>
 			</ul>
 			<div class="comment_insight" id="ilb">+</div>
-			<form action="javascript_video.html" method="post">
-				<input class="commentarea" type="text" name="comment" placeholder="Comment here">
-				<button class="post_btn" type="submit"><img src="images/tick.png"></button>
-			</form>
+			
+				<input class="commentarea topic" type="text" name="comment" placeholder="Comment here">
+				<button class="post_btn" id="submitpost" type="submit"><img src="images/tick.png"></button>
+			
 		</div>
 </div>
 </div>
-<div id="php" class="loda"><?php echo isset(($_SESSION['signuser'])); ?></div>
-<div id="phpname" class="loda"><?php echo ($_SESSION['signuser']); ?></div>
-<div id="phplogin" class="loda"><?php echo ($_SESSION['loginuser']); ?></div>
-<div id="loginbool" class="loda"><?php echo isset(($_SESSION['loginuser'])); ?></div>
+
 <script type="text/javascript">
 	var ind = document.getElementById("indicator");
 	var chat = document.getElementById("chat_b");
@@ -145,6 +253,10 @@ session_start();
 	if (loginuser=="empty1") {
 		alert("Wrong Username Or Password");
 	}
+	if (loginuser!="empty1" && loginbool=="1") {
+		log.innerHTML="Logout";
+
+	}
 //<br>
 //<b>Notice</b>:  Undefined index: user in <b>C:\MAMP\htdocs\Webdevpro-master\loda.php</b> on line <b>115</b><br>
    
@@ -159,6 +271,12 @@ session_start();
 		 document.getElementById("main2").style.display='none';
 		document.getElementById("main3").style.display='none';
 		document.getElementById("main4").style.display='none';
+		document.getElementById("main5").style.display='none';
+		document.getElementById("main6").style.display='none';
+		chat2.style.display='none';
+		note2.style.display='none';
+		log.style.display='none';
+		sign.style.display='none';
 	}
 	note.onclick = function(){
 		ind.style.background = "#0465b5";
@@ -171,17 +289,34 @@ session_start();
 		 document.getElementById("main2").style.display='none';
 		document.getElementById("main4").style.display='none';
 		document.getElementById("main3").style.display='none';
+		document.getElementById("main5").style.display='none';
+		chat2.style.display='none';
+		note2.style.display='none';
+		log.style.display='none';
+		sign.style.display='none';
+	document.getElementById("main6").style.display='block';
 			if (loginbool!="1" || loginuser=="empty1") {
 			document.getElementById("main4").style.display='block';
+			document.getElementById("main6").style.display='none';
 		}
 	}
 	ddb.onclick = function(){
 		if (dd.style.opacity == "1"){
 			dd.style.opacity = "0";
 			dd.style.transform = "translateY(-10px)";
+			chat2.style.display='none';
+			note2.style.display='none';
+			log.style.display='none';
+			sign.style.display='none';
+	
 		} else {
 			dd.style.opacity = "1";
 			dd.style.transform = "translateY(0)";
+			chat2.style.display='block';
+			note2.style.display='block';
+			log.style.display='block';
+			sign.style.display='block';
+	
 		}
 	}
 	chat2.onclick = chat.onclick
@@ -197,6 +332,15 @@ session_start();
 		document.getElementById("main2").style.display='block';
 		document.getElementById("main3").style.display='none';
 		document.getElementById("main4").style.display='none';
+		document.getElementById("main6").style.display='none';
+		chat2.style.display='none';
+		note2.style.display='none';
+		log.style.display='none';
+		sign.style.display='none';
+		if (log.innerHTML=="Logout") {
+			document.getElementById("main2").style.display='none';
+			document.getElementById("main5").style.display='block';}
+		
 	
 		//console.log("strike");
 	}
@@ -210,6 +354,12 @@ session_start();
 		document.getElementsByClassName("chatbox_downbar")[0].style.pointerEvents = "none";
 		document.getElementById("main2").style.display='none';
 		document.getElementById("main4").style.display='none';
+		document.getElementById("main5").style.display='none';
+		document.getElementById("main6").style.display='none';
+		chat2.style.display='none';
+		note2.style.display='none';
+		log.style.display='none';
+		sign.style.display='none';
 		if (userbool=="1") {
 			document.getElementById("main3").style.display='block';
 			document.getElementById("main1").style.display='none';
@@ -393,7 +543,7 @@ session_start();
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script> -->
-			<script src="assets/js/drag.js"></script>
+			<!-- <script src="assets/js/drag.js"></script> !-->
 			<script src="assets/js/jquery.js"></script>
 			<script src='assets/js/javascript.js'></script>
 
