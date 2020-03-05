@@ -74,6 +74,10 @@ session_start();
 				<li class="dd_opt" id="log">Login</li>
 				<li class="dd_opt" id="sign">Sign Up</li>
 			</ul>
+			<select class="sort_method">
+				<option>Timestamp</option>
+				<option>Newest</option>
+			</select>>
 		</div>
 		<div class="chatbox_midbar" id="bg">
 			<div class="chatarea">
@@ -99,6 +103,7 @@ session_start();
 				<div class="main4" id="main4">
 	    			<h4 class="contenty"> Please Login to Add Notes</h4>
 				</div>
+
 				<div class="main5" id="main5">
 					<form class="form1" action="logout.php" method="POST">
 					<button class="submit3" align="center" type="submit" name="submit">Logout</button></form>
@@ -206,6 +211,107 @@ function displaytopic(usery) {
 
 
 				</div>
+				                                                                <!-- chat starts from here -->
+			<div class="main7" id="main7">
+			<div class="displayb"></div>
+				
+		<script type="text/javascript">		
+$(document).ready(function () {var usery=document.querySelector('#phplogin').innerText;
+	displaychat(usery);
+  //setInterval(function(){displaytopic();}, 1000);
+
+
+$("#submitposty").click(function (argument) {
+	var vid = document.getElementById("myVideo");
+    var usery=document.querySelector('#phplogin').innerText;
+    var topicy=$(".topicy").val();
+    var id=0;
+    var currenttimey=vid.currentTime;
+    var doney=1;
+var secs = Math.round(currenttimey);
+var hours = Math.floor(secs / (60 * 60));
+var divisor_for_minutes = secs % (60 * 60);
+var minutes = Math.floor(divisor_for_minutes / 60);
+var divisor_for_seconds = divisor_for_minutes % 60;
+var seconds = Math.ceil(divisor_for_seconds);
+var zero="0";
+if (hours<10) {
+var hour=hours.toString();
+hour=zero.concat(hour);	
+}
+else{
+	var hour=hours.toString();
+}
+if (minutes<10) {
+var minute=minutes.toString();
+minute=zero.concat(minute);	
+}
+else{
+	var minute=minutes.toString();
+}
+if (seconds<10) {
+var second=seconds.toString();
+second=zero.concat(second);	
+}
+else{
+	var second=seconds.toString();
+}
+var colon=":";
+var timeminy=hour.concat(colon,minute,colon,second);
+
+
+ load_chat();
+
+ function load_chat()
+ {
+  $.ajax({
+   url:"ajaxy.php",
+   method:"POST",
+   data:{
+   	doney:doney,
+   	id:id,
+usery:usery,
+timeminy:timeminy,
+topicy:topicy
+   },
+   success:function(data)
+   {
+   displaychat(usery);
+    $('.topicy').val('');
+   }
+  })
+ }
+
+
+});
+
+});
+
+  function displaychat(usery) {
+	var displaychat=1;
+	  $.ajax({
+   url:"ajaxy.php",
+   method:"POST",
+   data:{displaychat:1,
+   	usery:usery
+   	},
+   success:function(d)
+   {
+   $(".displayb").html(d);
+   }
+  })
+	
+}    
+
+
+</script>
+
+
+
+			</div>
+			
+
+
 
 		</div>
 		<div class="chatarea_side">
@@ -223,7 +329,8 @@ function displaytopic(usery) {
 				<li class="reaction"><img src="images/react1.png" class="react"></li>
 			</ul>
 			<div class="comment_insight" id="ilb">+</div>
-			
+				<input class="commentarea topicy" type="text" name="comment" placeholder="Comment here">
+				<button class="post_btn" id="submitposty" type="submit"><img src="images/tick.png"></button>
 				<input class="commentarea topic" type="text" name="comment" placeholder="Comment here">
 				<button class="post_btn" id="submitpost" type="submit"><img src="images/tick.png"></button>
 			
@@ -250,13 +357,17 @@ function displaytopic(usery) {
 	var user=document.getElementById("phpname").innerHTML;
 	var loginuser=document.getElementById("phplogin").innerHTML;
 	var loginbool=document.getElementById("loginbool").innerHTML;
+	var c_btn = document.getElementById("submitposty");
+	var n_btn = document.getElementById("submitpost");
+	var c_in = document.getElementsByClassName("topicy")[0];
+	var n_in = document.getElementsByClassName("topic")[0];
 	if (loginuser=="empty1") {
 		alert("Wrong Username Or Password");
 	}
 	if (loginuser!="empty1" && loginbool=="1") {
 		log.innerHTML="Logout";
-
 	}
+
 //<br>
 //<b>Notice</b>:  Undefined index: user in <b>C:\MAMP\htdocs\Webdevpro-master\loda.php</b> on line <b>115</b><br>
    
@@ -273,10 +384,15 @@ function displaytopic(usery) {
 		document.getElementById("main4").style.display='none';
 		document.getElementById("main5").style.display='none';
 		document.getElementById("main6").style.display='none';
+		document.getElementById("main7").style.display='block';
 		chat2.style.display='none';
 		note2.style.display='none';
 		log.style.display='none';
 		sign.style.display='none';
+		n_btn.style.display='none';
+		n_in.style.display='none';
+		c_btn.style.display='block';
+		c_in.style.display='block';
 	}
 	note.onclick = function(){
 		ind.style.background = "#0465b5";
@@ -290,10 +406,15 @@ function displaytopic(usery) {
 		document.getElementById("main4").style.display='none';
 		document.getElementById("main3").style.display='none';
 		document.getElementById("main5").style.display='none';
+		document.getElementById("main7").style.display='none';
 		chat2.style.display='none';
 		note2.style.display='none';
 		log.style.display='none';
 		sign.style.display='none';
+		n_btn.style.display='block';
+		n_in.style.display='block';
+		c_btn.style.display='none';
+		c_in.style.display='none';
 	document.getElementById("main6").style.display='block';
 			if (loginbool!="1" || loginuser=="empty1") {
 			document.getElementById("main4").style.display='block';
@@ -315,7 +436,12 @@ function displaytopic(usery) {
 			chat2.style.display='block';
 			note2.style.display='block';
 			log.style.display='block';
-			sign.style.display='block';
+			if (log.innerHTML == "Login"){
+				sign.style.display='block';
+			} else {
+				sign.style.display='none';
+			}
+			
 	
 		}
 	}
@@ -333,10 +459,15 @@ function displaytopic(usery) {
 		document.getElementById("main3").style.display='none';
 		document.getElementById("main4").style.display='none';
 		document.getElementById("main6").style.display='none';
+		document.getElementById("main7").style.display='none';
 		chat2.style.display='none';
 		note2.style.display='none';
 		log.style.display='none';
 		sign.style.display='none';
+		n_btn.style.display='none';
+		n_in.style.display='none';
+		c_btn.style.display='none';
+		c_in.style.display='none';
 		if (log.innerHTML=="Logout") {
 			document.getElementById("main2").style.display='none';
 			document.getElementById("main5").style.display='block';}
@@ -356,10 +487,15 @@ function displaytopic(usery) {
 		document.getElementById("main4").style.display='none';
 		document.getElementById("main5").style.display='none';
 		document.getElementById("main6").style.display='none';
+		document.getElementById("main7").style.display='none';
 		chat2.style.display='none';
 		note2.style.display='none';
 		log.style.display='none';
 		sign.style.display='none';
+		n_btn.style.display='none';
+		n_in.style.display='none';
+		c_btn.style.display='none';
+		c_in.style.display='none';
 		if (userbool=="1") {
 			document.getElementById("main3").style.display='block';
 			document.getElementById("main1").style.display='none';

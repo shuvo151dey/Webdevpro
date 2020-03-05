@@ -213,7 +213,7 @@ input[type="text"]{
 
 .post_btn{
   width: 10%;
-  height: 15%;
+  height: 100%;
   right: 0%;
   background: white;
   border: none;
@@ -278,7 +278,11 @@ input[type="password"]:focus{
   display: none;
   opacity: 0;
 }
-
+.main7{
+  display: block;
+  background-color: #eeeeee;
+  height: 100%;
+}
 .main1,.main5,.main6 {display: none;
   background-color: #FFFFFF;
   height: 100%;
@@ -393,4 +397,26 @@ a {
 .displaya{
   background: #eeeeee;
   height: fit-content;
+}
+#topicy,
+#submitposty{
+  display: block;
+}
+#topic,
+#submitpost{
+  display: none;
+}
+.sort_method{
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    border: none;
+    font-size: medium;
+    height: min-content;
+    width: fit-content;
+    -webkit-appearance: listbox;
+}
+.sort_method:focus{
+  border: none;
+  box-shadow: none;
 }
