@@ -1,20 +1,20 @@
 <?php
 session_start();
 $user = 'root';
-$password = 'root';
+$password = '';
 $db = 'mydb';
-$host = 'localhost:8889';
+$host = 'localhost';
 
 $link = new mysqli(
-   $host, 
-   $user, 
+   $host,
+   $user,
    $password,$db
 );
 
 $name=mysqli_real_escape_string($link, $_POST['user']);
 $pass=mysqli_real_escape_string($link, $_POST['pass']);
 if (empty($name) || empty($pass)) {
-header("Location: http://localhost:8888/Webdevpro-master/loda.php");
+header("Location: http://localhost/WebProjectFinal-master/loda.php");
 exit();
 }
 $_SESSION['signuser']=$name;
@@ -29,18 +29,5 @@ if ($link->query($qy) === TRUE) {
     $last_id = $conn->insert_id;
 }
 
-header("location:http://localhost:8888/Webdevpro-master/loda.php");
+header("location:http://localhost/WebProjectFinal-master/loda.php");
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,17 +1,17 @@
 <?php
 $username = 'root';
-$password = 'root';
+$password = '';
 $db = 'mydb';
-$host = 'localhost:8889';
+$host = 'localhost';
 
 $link = new mysqli(
-   $host, 
-   $username, 
+   $host,
+   $username,
    $password,$db
 );
 
 if ($link->connect_error) {
-    die("Connection failed: " . $link->connect_error);} 
+    die("Connection failed: " . $link->connect_error);}
 
 $phone=mysqli_real_escape_string($link, $_POST['phone']);
 $comment=mysqli_real_escape_string($link, $_POST['comment']);
@@ -25,6 +25,6 @@ if ($link->query($qa) === TRUE) {
 } else {
     echo "Error: " . $qa . "<br>" . $link->error;
 }
-header( "Location: http://localhost:8888/Webdevpro-master/generic.html" );
+header( "Location: http://localhost/WebProjectFinal-master/generic.html" );
 die();
 ?>

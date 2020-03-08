@@ -59,10 +59,30 @@ session_start();
 <div class="data" id="data"></div>
 <div class="container">
 	<video id="myVideo" width="600" height="355" >
-		<source src="video1.mp4" type="video/mp4" >
-		
+		<source src="videos/video1.mp4" type="video/mp4" >
 	</video>
-	<ul class="graph"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+	<ul class="graph">
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+		<li class="graph_column"></li>
+	</ul>
 	<ul id="video-controls" class="controls">
 		<li class="progress">
 			<progress id="progress" value="0" min="0">
@@ -94,7 +114,7 @@ session_start();
 			<select class="sort_method">
 				<option value="1">Newest</option>
 				<option value="2" id="sort">Timestamp</option>
-				
+
 			</select>>
 		</div>
 		<div class="chatbox_midbar" id="bg">
@@ -127,14 +147,14 @@ session_start();
 					<button class="submit3" align="center" type="submit" name="submit">Logout</button></form>
 				</div>
 				<div class="main6" id="main6">
-					
-                 
+
+
       <div class="displaya"></div>
       <div class="reactionhide" id="reactionhide">0</div>
-     
 
 
-    
+
+
 <?php     //<textarea class="topic"  type="text" align="center" name="topic" placeholder="ADD TOPIC"></textarea>    ?>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript">
@@ -163,21 +183,21 @@ var seconds = Math.ceil(divisor_for_seconds);
 var zero="0";
 if (hours<10) {
 var hour=hours.toString();
-hour=zero.concat(hour);	
+hour=zero.concat(hour);
 }
 else{
 	var hour=hours.toString();
 }
 if (minutes<10) {
 var minute=minutes.toString();
-minute=zero.concat(minute);	
+minute=zero.concat(minute);
 }
 else{
 	var minute=minutes.toString();
 }
 if (seconds<10) {
 var second=seconds.toString();
-second=zero.concat(second);	
+second=zero.concat(second);
 }
 else{
 	var second=seconds.toString();
@@ -230,8 +250,8 @@ function displaytopic(usery) {
    $(".displaya").html(d);
    }
   })
-	
-}  
+
+}
 
 
 </script>
@@ -241,8 +261,8 @@ function displaytopic(usery) {
 				                                                                <!-- chat starts from here -->
 			<div class="main7" id="main7">
 			<div class="displayb"></div>
-				
-		<script type="text/javascript">		
+
+		<script type="text/javascript">
 $(document).ready(function () {
 	var myvid=document.getElementById("myVideo");
 	myvid.oncanplay = function() {
@@ -262,14 +282,13 @@ vid_len:vid_len
    },
    success:function(d)
    {
-   alert(vid_len);
-   alert("datadisplayed");
+
    $(".data").html(d);
    }
   })
  }
 
-  
+
 
 };
 
@@ -277,7 +296,7 @@ vid_len:vid_len
 
 	var usery=document.querySelector('#phplogin').innerText;
 	displaychat(usery);
-	
+
   //setInterval(function(){displaytopic();}, 1000);
 var displaytimechat=0;
   //setInterval(function(){displaytopic();}, 1000);
@@ -303,52 +322,52 @@ var seconds = Math.ceil(divisor_for_seconds);
 var zero="0";
 if (hours<10) {
 var hour=hours.toString();
-hour=zero.concat(hour);	
+hour=zero.concat(hour);
 }
 else{
 	var hour=hours.toString();
 }
 if (minutes<10) {
 var minute=minutes.toString();
-minute=zero.concat(minute);	
+minute=zero.concat(minute);
 }
 else{
 	var minute=minutes.toString();
 }
 if (seconds<10) {
 var second=seconds.toString();
-second=zero.concat(second);	
+second=zero.concat(second);
 }
 else{
 	var second=seconds.toString();
 }
 var colon=":";
 var time_show=hour.concat(colon,minute,colon,second);
-  
+
                 if (time_show=="00:00:00") {
                      	 elementy=document.getElementById("0");
-                     	
+
                          elementy.scrollIntoView({ behavior: 'smooth', block: 'nearest',inline:'nearest'});
-                     	
+
                      }
                 search_table(time_show);
 
-           
-           function search_table(value){  
-                $('.comment_display').each(function(){  
-                     var found = 'false';
-                     var present_id,prev_id,elementy; 
 
-                     $(this).each(function(){ 
-                     
-                          if($(this).text().indexOf(value) >= 0)  
-                          {  
-                               found = 'true';  
-                          }  
-                     });  
-                     if(found == 'true')  
+           function search_table(value){
+                $('.comment_display').each(function(){
+                     var found = 'false';
+                     var present_id,prev_id,elementy;
+
+                     $(this).each(function(){
+
+                          if($(this).text().indexOf(value) >= 0)
+                          {
+                               found = 'true';
+                          }
+                     });
+                     if(found == 'true')
                      {  prev_id=present_id;
-                     	
+
                      	$(this).show();
                           present_id=$(this).attr("id");
                          elementy=document.getElementById(present_id);
@@ -357,25 +376,25 @@ var time_show=hour.concat(colon,minute,colon,second);
                              //scrollTop: $(`#present_id`).offset().top
                             // }, 1000);
 
-                     }  
-                     else  
-                     { 
+                     }
+                     else
+                     {
 
-                      
+
                          //elementy=document.getElementById(prev_id);
                          //elementy.scrollIntoView({ behavior: 'smooth', block: 'nearest',inline:'nearest'});
-                         //elementy.scrollIntoView({ behavior: 'smooth', block: 'nearest',inline:'nearest'}); //$(this).hide();  
-                     }  
-                });  
-           }  
-       
-   
+                         //elementy.scrollIntoView({ behavior: 'smooth', block: 'nearest',inline:'nearest'}); //$(this).hide();
+                     }
+                });
+           }
+
+
 
 
 
 
 }
-	
+
 
 function displaytimechat() {
 	var displaytimechat=1;
@@ -389,7 +408,7 @@ function displaytimechat() {
    $(".displayb").html(d);
    }
   })
-	
+
 } }
 
 
@@ -422,21 +441,21 @@ var zero="0";
 
 if (hours<10) {
 var hour=hours.toString();
-hour=zero.concat(hour);	
+hour=zero.concat(hour);
 }
 else{
 	var hour=hours.toString();
 }
 if (minutes<10) {
 var minute=minutes.toString();
-minute=zero.concat(minute);	
+minute=zero.concat(minute);
 }
 else{
 	var minute=minutes.toString();
 }
 if (seconds<10) {
 var second=seconds.toString();
-second=zero.concat(second);	
+second=zero.concat(second);
 }
 else{
 	var second=seconds.toString();
@@ -483,15 +502,15 @@ current_react:current_react
    url:"ajaxy.php",
    method:"POST",
    data:{displaychat:1,
-   	
+
    	},
    success:function(d)
    {
    $(".displayb").html(d);
    }
   })
-	
-}    
+
+}
 
 
 </script>
@@ -499,7 +518,7 @@ current_react:current_react
 
 
 			</div>
-			
+
 
 
 
@@ -523,7 +542,7 @@ current_react:current_react
 				<button class="post_btn submitposty" id="submitposty" type="submit" style="display:block"><img src="images/tick.png"></button>
 				<input class="commentarea topic" type="text" name="comment" placeholder="Comment here" style="display:none">
 				<button class="post_btn submitpost" id="submitpost" type="submit" style="display:none"><img src="images/tick.png" ></button>
-			
+
 		</div>
 </div>
 </div>
@@ -551,7 +570,7 @@ current_react:current_react
 	var n_btn = document.getElementById("submitpost");
 	var c_in = document.getElementsByClassName("topicy")[0];
 	var n_in = document.getElementsByClassName("topic")[0];
-	
+
 	if (loginuser=="empty1") {
 		alert("Wrong Username Or Password");
 	}
@@ -561,7 +580,7 @@ current_react:current_react
 
 //<br>
 //<b>Notice</b>:  Undefined index: user in <b>C:\MAMP\htdocs\Webdevpro-master\loda.php</b> on line <b>115</b><br>
-   
+
 	chat.onclick = function(){
 		ind.style.background = "red";
 		bg.style.background = "#f56e6e";
@@ -621,7 +640,7 @@ current_react:current_react
 			note2.style.display='none';
 			log.style.display='none';
 			sign.style.display='none';
-	
+
 		} else {
 			dd.style.opacity = "1";
 			dd.style.transform = "translateY(0)";
@@ -633,8 +652,8 @@ current_react:current_react
 			} else {
 				sign.style.display='none';
 			}
-			
-	
+
+
 		}
 	}
 	chat2.onclick = chat.onclick
@@ -663,9 +682,8 @@ current_react:current_react
 		if (log.innerHTML=="Logout") {
 			document.getElementById("main2").style.display='none';
 			document.getElementById("main5").style.display='block';}
-		
-	
-		//console.log("strike");
+
+
 	}
 	sign.onclick = function(){
 		con.innerHTML = "Sign Up";
@@ -692,7 +710,6 @@ current_react:current_react
 			document.getElementById("main3").style.display='block';
 			document.getElementById("main1").style.display='none';
 		}
-		//console.log("strike");
 	}
 	ilb.onclick = function(){
 		if(il.style.opacity == "0"){
@@ -716,7 +733,7 @@ current_react:current_react
 		ilb.innerHTML = "<img src='" + react[2].src + "' >";
 		il.style.opacity = "0";
 		document.getElementById("reactionhide").innerHTML="3";
-		
+
 	}
 	react[3].onclick = function(){
 		ilb.innerHTML = "<img src='" + react[3].src + "' >";

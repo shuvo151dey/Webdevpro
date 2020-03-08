@@ -21,7 +21,7 @@ input[type="text"]{
 .container video{
   position: absolute;
   top: 15vh;
-  left: 13vw;
+  left: 11vw;
   -webkit-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
   -moz-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
   box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
@@ -31,7 +31,7 @@ input[type="text"]{
   width: 400px;
   position: absolute;
   top: 15vh;
-  right: 10vw;
+  left: calc(11vw + 650px);
   -webkit-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
   -moz-box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
   box-shadow: 10px 11px 18px -2px rgba(0,0,0,0.56);
@@ -461,7 +461,7 @@ a {
   width: 60%!important;
   display: inline-block!important;
   margin-bottom: 10px;
-  
+
 }
 .submitreply{
   background-color: inherit!important;
@@ -492,21 +492,20 @@ a {
   box-shadow: inset 0px 0px 10px 0px rgba(255,255,255,0.75);
   position: absolute;
   top: calc(15vh + 250px);
-  left: 13vw;  
+  left: 11vw;
   padding: 0;
-  transform: scaleY(.6) translateY(50px);
+  transform: scaleY(.4) translateY(50px);
   transform: all .9s;
   opacity: 0.5;
 }
 .graph:hover{
   transform: scale(1) translateY(0);
-  opacity: 1
+  opacity: 1;
 }
 .graph li{
   content: '.';
   width: 5%;
   height: 100%;
   padding: 0;
-  border-left: 1px solid white;
   display: inline-block;
 }

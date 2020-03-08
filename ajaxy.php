@@ -1,13 +1,13 @@
 <?php
 
 $user = 'root';
-$password = 'root';
+$password = '';
 $db = 'mydb';
-$host = 'localhost:8889';
+$host = 'localhost';
 
 $link = new mysqli(
-   $host, 
-   $user, 
+   $host,
+   $user,
    $password,$db
 );
 
@@ -23,7 +23,7 @@ if (isset($_GET['done'])) {
 $qy="INSERT INTO `note` (loginuser,note,time_mark,second,reaction)
 VALUES ('$usery','$topic','$currenttime','$totalsecsy','$reactiony')" ;
 mysqli_query($link,$qy);
- echo "data entered successfully"; 
+ echo "data entered successfully";
 }
 if (isset($_GET['doney'])) {
 $id=0;//$_POST['id'];
@@ -36,7 +36,7 @@ $id=0;//$_POST['id'];
 $qya="INSERT INTO chat (chatuser,chat,time_mark,second,reaction)
 VALUES ('$userya','$topicy','$currenttimey','$totalsecs','$reaction')" ;
 mysqli_query($link,$qya);
- echo "data entered successfully"; 
+ echo "data entered successfully";
 }
 
 
@@ -49,7 +49,7 @@ while ($rowy=mysqli_fetch_array($resulty)) {
 
 
 	<div class="comment_display" id="0">
-		
+
 		<span class="timestamp"><?php echo $rowy['time_mark']; ?></span>
 		<p class="comment_content"><?php echo $rowy['note']; ?></p>
 		<img class="comment_react" src="images/<?php echo $rowy['reaction']; ?>.png">
@@ -88,7 +88,7 @@ while ($rowchat=mysqli_fetch_array($resultchat)) {
 		<p class="comment_content"><?php echo $rowchat['chat']; ?></p>
 		<div class="reply_btn r<?php echo $rowchat['id']; ?>">Reply</div>
 		<img class="comment_react" src="images/<?php echo $rowchat['reaction']; ?>.png">
-		
+
 	</div>
 	<div class="reply_column reply_column<?php echo $rowchat['id']; ?>">
 		<div class=" reply_c<?php echo $rowchat['id']; ?>"></div>
@@ -134,9 +134,9 @@ while ($rowchat=mysqli_fetch_array($resultchat)) {
 		<p class="comment_content"><?php echo $rowchat['chat']; ?></p>
 		<div class="reply_btn r<?php echo $rowchat['id']; ?>">Reply</div>
 		<img class="comment_react" src="images/<?php echo $rowchat['reaction']; ?>.png">
-			
+
 		</div>
-		
+
 	</div>
 	<div class="reply_column reply_column<?php echo $rowchat['id']; ?>">
 		<div class=" reply_c<?php echo $rowchat['id']; ?>"></div>
@@ -159,12 +159,12 @@ while ($rowchat=mysqli_fetch_array($resultchat)) {
 		}
 	</script>
 	<script type="text/javascript">
-		
+
 		$("#<?php echo $rowchat['id']; ?>").click(function (argument) {
 			var reply_id="<?php echo $rowchat['id']; ?>";
 			var user_reply=document.querySelector('#phplogin').innerText;
             var reply_content=$(".reply<?php echo $rowchat['id']; ?>").val();
-            var reply_post=1;   
+            var reply_post=1;
 
 		load_reply();
 
@@ -203,12 +203,12 @@ reply_content:reply_content
    $(".reply_c"+reply_id).html(d);
    }
   })
-	
-} 
+
+}
 
 
 	</script>
-	
+
 	<?php
 }
 die();
