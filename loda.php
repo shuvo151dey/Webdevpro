@@ -13,7 +13,7 @@ session_start();
 
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/chatbox.css" />
-
+		<link rel="stylesheet" type="text/css" href="assets/css/videocontrols.css">
 		<link rel='stylesheet' type='text/css' href='assets/css/player.css' />
 
 		<script src="assets/js/jquery.js"></script>
@@ -56,12 +56,29 @@ session_start();
 
 		<!--Video player-->
 
-
+<div class="data" id="data"></div>
 <div class="container">
-	<video id="myVideo" width="600" height="355" controls>
+	<video id="myVideo" width="600" height="355" >
 		<source src="video1.mp4" type="video/mp4" >
 		
 	</video>
+	<ul class="graph"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+	<ul id="video-controls" class="controls">
+		<li class="progress">
+			<progress id="progress" value="0" min="0">
+				<span id="progress-bar"></span>
+			</progress>
+		</li>
+		   <li><button id="playpause" type="button"><img src="images/play_pause.png" height="25" width="25"></button></li>
+		   <li><button id="stop" type="button"><img src="images/stop.png" height="25" width="25"></button></li>
+		   <li><button id="mute" type="button"><img src="images/mute.svg" height="25" width="25"></button></li>
+		<li class="positioner">+</li>
+		   <li><button id="volinc" type="button"><img src="images/volinc.png" height="25" width="25"></button></li>
+		   <li><button id="voldec" type="button"><img src="images/voldec.png" height="25" width="25"></button></li>
+		   <li><button id="fs" type="button"><img src="images/fullscreen.png" height="25" width="25"></button></li>
+	</ul>
+<script type="text/javascript" src="assets/js/videocontrols.js"></script>
+
 	<div class="chatbox">
 		<div class="chatbox_upbar">
 			<div class="dropdown_btn" id="ddb"><div class="dropdown_logo"></div></div>
@@ -75,8 +92,9 @@ session_start();
 				<li class="dd_opt" id="sign">Sign Up</li>
 			</ul>
 			<select class="sort_method">
-				<option>Timestamp</option>
-				<option>Newest</option>
+				<option value="1">Newest</option>
+				<option value="2" id="sort">Timestamp</option>
+				
 			</select>>
 		</div>
 		<div class="chatbox_midbar" id="bg">
@@ -112,6 +130,7 @@ session_start();
 					
                  
       <div class="displaya"></div>
+      <div class="reactionhide" id="reactionhide">0</div>
      
 
 
@@ -119,18 +138,22 @@ session_start();
 <?php     //<textarea class="topic"  type="text" align="center" name="topic" placeholder="ADD TOPIC"></textarea>    ?>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function () {var usery=document.querySelector('#phplogin').innerText;
 	displaytopic(usery);
-  //setInterval(function(){displaytopic();}, 1000);
+	    //adding event listeners
+
 
 
 $("#submitpost").click(function (argument) {
+	var current_reacty=document.getElementById("reactionhide").innerHTML;
 	var vid = document.getElementById("myVideo");
-    var usery=document.querySelector('#phplogin').innerText;
+ var usery=document.querySelector('#phplogin').innerText;
     var topic=$(".topic").val();
     var id=0;
     var currenttime=vid.currentTime;
     var done=1;
+var totalsecsy=Math.floor(currenttime);
 var secs = Math.round(currenttime);
 var hours = Math.floor(secs / (60 * 60));
 var divisor_for_minutes = secs % (60 * 60);
@@ -175,11 +198,15 @@ var timemin=hour.concat(colon,minute,colon,second);
    	id:id,
 usery:usery,
 timemin:timemin,
-topic:topic
+topic:topic,
+totalsecsy:totalsecsy,
+current_reacty:current_reacty
    },
    success:function(data)
    {
    displaytopic(usery);
+   document.getElementById("reactionhide").innerHTML="0";
+    document.getElementById("ilb").innerHTML = "+";
     $('.topic').val('');
    }
   })
@@ -216,18 +243,175 @@ function displaytopic(usery) {
 			<div class="displayb"></div>
 				
 		<script type="text/javascript">		
-$(document).ready(function () {var usery=document.querySelector('#phplogin').innerText;
+$(document).ready(function () {
+	var myvid=document.getElementById("myVideo");
+	myvid.oncanplay = function() {
+   var vid_len = document.getElementById('myVideo').duration;
+   var x=1;
+load_graph();
+
+ function load_graph()
+ {
+  $.ajax({
+   url:"x.php",
+   method:"POST",
+   data:{
+   	x:x,
+vid_len:vid_len
+
+   },
+   success:function(d)
+   {
+   alert(vid_len);
+   alert("datadisplayed");
+   $(".data").html(d);
+   }
+  })
+ }
+
+  
+
+};
+
+
+
+	var usery=document.querySelector('#phplogin').innerText;
 	displaychat(usery);
+	
   //setInterval(function(){displaytopic();}, 1000);
+var displaytimechat=0;
+  //setInterval(function(){displaytopic();}, 1000);
+ function show(){
+ // get selected value and store it in val
+ var val = document.getElementsByTagName('select')[0].value;
+ // show selected value
+if (val==2) {
+	displaytimechat();
+var vid = document.getElementById("myVideo");
+
+
+
+vid.ontimeupdate = function() {myFunction()};
+function myFunction() {var showtime=Math.floor(vid.currentTime);
+  // Display the current position of the video in a p element with id="demo"
+var secs = Math.round(vid.currentTime);
+var hours = Math.floor(secs / (60 * 60));
+var divisor_for_minutes = secs % (60 * 60);
+var minutes = Math.floor(divisor_for_minutes / 60);
+var divisor_for_seconds = divisor_for_minutes % 60;
+var seconds = Math.ceil(divisor_for_seconds);
+var zero="0";
+if (hours<10) {
+var hour=hours.toString();
+hour=zero.concat(hour);	
+}
+else{
+	var hour=hours.toString();
+}
+if (minutes<10) {
+var minute=minutes.toString();
+minute=zero.concat(minute);	
+}
+else{
+	var minute=minutes.toString();
+}
+if (seconds<10) {
+var second=seconds.toString();
+second=zero.concat(second);	
+}
+else{
+	var second=seconds.toString();
+}
+var colon=":";
+var time_show=hour.concat(colon,minute,colon,second);
+  
+                if (time_show=="00:00:00") {
+                     	 elementy=document.getElementById("0");
+                     	
+                         elementy.scrollIntoView({ behavior: 'smooth', block: 'nearest',inline:'nearest'});
+                     	
+                     }
+                search_table(time_show);
+
+           
+           function search_table(value){  
+                $('.comment_display').each(function(){  
+                     var found = 'false';
+                     var present_id,prev_id,elementy; 
+
+                     $(this).each(function(){ 
+                     
+                          if($(this).text().indexOf(value) >= 0)  
+                          {  
+                               found = 'true';  
+                          }  
+                     });  
+                     if(found == 'true')  
+                     {  prev_id=present_id;
+                     	
+                     	$(this).show();
+                          present_id=$(this).attr("id");
+                         elementy=document.getElementById(present_id);
+                         elementy.scrollIntoView({ behavior: 'smooth', block: 'nearest',inline:'nearest'});
+                          //$('html, body').animate({
+                             //scrollTop: $(`#present_id`).offset().top
+                            // }, 1000);
+
+                     }  
+                     else  
+                     { 
+
+                      
+                         //elementy=document.getElementById(prev_id);
+                         //elementy.scrollIntoView({ behavior: 'smooth', block: 'nearest',inline:'nearest'});
+                         //elementy.scrollIntoView({ behavior: 'smooth', block: 'nearest',inline:'nearest'}); //$(this).hide();  
+                     }  
+                });  
+           }  
+       
+   
+
+
+
+
+}
+	
+
+function displaytimechat() {
+	var displaytimechat=1;
+	  $.ajax({
+   url:"ajaxy.php",
+   method:"POST",
+   data:{displaytimechat:1
+   	},
+   success:function(d)
+   {
+   $(".displayb").html(d);
+   }
+  })
+	
+} }
+
+
+if (val==1) {displaychat();}
+
+
+}
+//now, you can invoke show() method as per your requirement.
+document.getElementsByTagName('select')[0].addEventListener('change',function(){
+ show();
+});
 
 
 $("#submitposty").click(function (argument) {
+    var current_react=document.getElementById("reactionhide").innerHTML;
 	var vid = document.getElementById("myVideo");
     var usery=document.querySelector('#phplogin').innerText;
     var topicy=$(".topicy").val();
     var id=0;
     var currenttimey=vid.currentTime;
     var doney=1;
+var totalsecs=Math.floor(currenttimey);
 var secs = Math.round(currenttimey);
 var hours = Math.floor(secs / (60 * 60));
 var divisor_for_minutes = secs % (60 * 60);
@@ -235,6 +419,7 @@ var minutes = Math.floor(divisor_for_minutes / 60);
 var divisor_for_seconds = divisor_for_minutes % 60;
 var seconds = Math.ceil(divisor_for_seconds);
 var zero="0";
+
 if (hours<10) {
 var hour=hours.toString();
 hour=zero.concat(hour);	
@@ -272,12 +457,17 @@ var timeminy=hour.concat(colon,minute,colon,second);
    	id:id,
 usery:usery,
 timeminy:timeminy,
-topicy:topicy
+topicy:topicy,
+totalsecs:totalsecs,
+current_react:current_react
+
    },
    success:function(data)
    {
-   displaychat(usery);
+   displaychat();
     $('.topicy').val('');
+    document.getElementById("reactionhide").innerHTML="0";
+    document.getElementById("ilb").innerHTML = "+";
    }
   })
  }
@@ -287,13 +477,13 @@ topicy:topicy
 
 });
 
-  function displaychat(usery) {
+  function displaychat() {
 	var displaychat=1;
 	  $.ajax({
    url:"ajaxy.php",
    method:"POST",
    data:{displaychat:1,
-   	usery:usery
+   	
    	},
    success:function(d)
    {
@@ -321,18 +511,18 @@ topicy:topicy
 		</div>
 		<div class="chatbox_downbar">
 			<ul class="insight_list" id="il">
-				<li class="reaction"><img src="images/tick2.png" class="react"></li>
-				<li class="reaction"><img src="images/cross.png" class="react"></li>
-				<li class="reaction"><img src="images/heart.png" class="react"></li>
-				<li class="reaction"><img src="images/pencil.png" class="react"></li>
-				<li class="reaction"><img src="images/question.png" class="react"></li>
-				<li class="reaction"><img src="images/react1.png" class="react"></li>
+				<li class="reaction"><img src="images/1.png" class="react"></li>
+				<li class="reaction"><img src="images/2.png" class="react"></li>
+				<li class="reaction"><img src="images/3.png" class="react"></li>
+				<li class="reaction"><img src="images/4.png" class="react"></li>
+				<li class="reaction"><img src="images/5.png" class="react"></li>
+				<li class="reaction"><img src="images/6.png" class="react"></li>
 			</ul>
 			<div class="comment_insight" id="ilb">+</div>
-				<input class="commentarea topicy" type="text" name="comment" placeholder="Comment here">
-				<button class="post_btn" id="submitposty" type="submit"><img src="images/tick.png"></button>
-				<input class="commentarea topic" type="text" name="comment" placeholder="Comment here">
-				<button class="post_btn" id="submitpost" type="submit"><img src="images/tick.png"></button>
+				<input class="commentarea topicy" type="text" name="comment" placeholder="Comment here" style="display:block">
+				<button class="post_btn submitposty" id="submitposty" type="submit" style="display:block"><img src="images/tick.png"></button>
+				<input class="commentarea topic" type="text" name="comment" placeholder="Comment here" style="display:none">
+				<button class="post_btn submitpost" id="submitpost" type="submit" style="display:none"><img src="images/tick.png" ></button>
 			
 		</div>
 </div>
@@ -361,6 +551,7 @@ topicy:topicy
 	var n_btn = document.getElementById("submitpost");
 	var c_in = document.getElementsByClassName("topicy")[0];
 	var n_in = document.getElementsByClassName("topic")[0];
+	
 	if (loginuser=="empty1") {
 		alert("Wrong Username Or Password");
 	}
@@ -385,6 +576,7 @@ topicy:topicy
 		document.getElementById("main5").style.display='none';
 		document.getElementById("main6").style.display='none';
 		document.getElementById("main7").style.display='block';
+
 		chat2.style.display='none';
 		note2.style.display='none';
 		log.style.display='none';
@@ -509,29 +701,37 @@ topicy:topicy
 			il.style.opacity = "0";
 		}
 	}
+
 	react[0].onclick = function(){
 		ilb.innerHTML = "<img src='" + react[0].src + "' >";
 		il.style.opacity = "0";
+		document.getElementById("reactionhide").innerHTML="1";
 	}
 	react[1].onclick = function(){
 		ilb.innerHTML = "<img src='" + react[1].src + "' >";
 		il.style.opacity = "0";
+		document.getElementById("reactionhide").innerHTML="2";
 	}
 	react[2].onclick = function(){
 		ilb.innerHTML = "<img src='" + react[2].src + "' >";
 		il.style.opacity = "0";
+		document.getElementById("reactionhide").innerHTML="3";
+		
 	}
 	react[3].onclick = function(){
 		ilb.innerHTML = "<img src='" + react[3].src + "' >";
 		il.style.opacity = "0";
+		document.getElementById("reactionhide").innerHTML="4";
 	}
 	react[4].onclick = function(){
 		ilb.innerHTML = "<img src='" + react[4].src + "' >";
 		il.style.opacity = "0";
+		document.getElementById("reactionhide").innerHTML="5";
 	}
 	react[5].onclick = function(){
 		ilb.innerHTML = "<img src='" + react[5].src + "' >";
 		il.style.opacity = "0";
+		document.getElementById("reactionhide").innerHTML="6";
 	}
 </script>
 
@@ -621,7 +821,6 @@ topicy:topicy
 		<footer class="footer-distributed">
 
 			<div class="footer-left">
-		  <img src="img/logo.png">
 				<h3>Annoto</h3>
 
 				<p class="footer-links">

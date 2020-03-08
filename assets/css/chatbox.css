@@ -144,8 +144,7 @@ input[type="text"]{
   scrollbar-width: thin;
 }
 .chatarea::-webkit-scrollbar {
-  width: 10px;
-}
+ }
 .chatarea_side{
   float: right;
   width: 7%;
@@ -398,12 +397,12 @@ a {
   background: #eeeeee;
   height: fit-content;
 }
-#topicy,
-#submitposty{
+.topicy,
+.submitposty{
   display: block;
 }
-#topic,
-#submitpost{
+.topic,
+.submitpost{
   display: none;
 }
 .sort_method{
@@ -419,4 +418,95 @@ a {
 .sort_method:focus{
   border: none;
   box-shadow: none;
+}
+  .comment_u,
+.timestamp{
+  font-size: small!important;
+  font-style: italic!important;
+}
+.timestamp{
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 0
+}
+.comment_display{
+  height: fit-content;
+  background: antiquewhite;
+  width: fit-content;
+  min-width: 60%;
+  max-width: 100%;
+  position: relative;
+  padding-left: 5px;
+}
+.comment_content{
+  max-width: 100%;
+  padding-top: 10px;
+  font-size: 14px;
+}
+.reply_btn{
+  position: absolute;
+    right: 0;
+    bottom: -18px;
+    height: fit-content;
+    width: fit-content;
+    font-size: x-small;
+    cursor: pointer;
+}
+.reply_column{
+  text-align: -webkit-right;
+  display: none;
+}
+.reply{
+  width: 60%!important;
+  display: inline-block!important;
+  margin-bottom: 10px;
+  
+}
+.submitreply{
+  background-color: inherit!important;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+.tick{
+  width: 25px;
+  height: 25px;
+}
+.comment_react{
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.reactionhide{
+  display:none;
+}
+.graph{
+  list-style: none;
+  width: 600px;
+  height: 92px;
+  -webkit-box-shadow: inset 0px 0px 10px 0px rgba(255,255,255,0.75);
+  -moz-box-shadow: inset 0px 0px 10px 0px rgba(255,255,255,0.75);
+  box-shadow: inset 0px 0px 10px 0px rgba(255,255,255,0.75);
+  position: absolute;
+  top: calc(15vh + 250px);
+  left: 13vw;  
+  padding: 0;
+  transform: scaleY(.6) translateY(50px);
+  transform: all .9s;
+  opacity: 0.5;
+}
+.graph:hover{
+  transform: scale(1) translateY(0);
+  opacity: 1
+}
+.graph li{
+  content: '.';
+  width: 5%;
+  height: 100%;
+  padding: 0;
+  border-left: 1px solid white;
+  display: inline-block;
 }
