@@ -486,17 +486,16 @@ a {
 .graph{
   list-style: none;
   width: 600px;
-  height: 92px;
-  -webkit-box-shadow: inset 0px 0px 10px 0px rgba(255,255,255,0.75);
-  -moz-box-shadow: inset 0px 0px 10px 0px rgba(255,255,255,0.75);
-  box-shadow: inset 0px 0px 10px 0px rgba(255,255,255,0.75);
+  height: 100px;
+
   position: absolute;
-  top: calc(15vh + 250px);
+  top: calc(15vh + 255px);
   left: 11vw;
   padding: 0;
-  transform: scaleY(.4) translateY(50px);
+  transform: scaleY(.5) translateY(50px);
   transform: all .9s;
   opacity: 0.5;
+  background: black;
 }
 .graph:hover{
   transform: scale(1) translateY(0);
@@ -507,5 +506,6 @@ a {
   width: 5%;
   height: 100%;
   padding: 0;
-  display: inline-block;
+  display: block;
+  float: left;
 }
