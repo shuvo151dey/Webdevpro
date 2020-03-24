@@ -110,12 +110,13 @@ input[type="text"]{
   margin: 0;
   padding: 0;
   width: 30%;
+  height: 40%;
   position: absolute;
   text-align: center;
   opacity: 0;
   transform: translateY(-10px);
   transition: all .5s;
-  z-index: 1;
+  z-index: 2;
 }
 
 .dd_opt{
@@ -508,3 +509,10 @@ a {
   display: inline-block;
   margin-right: -4px;
 }
+.mouseover{
+  width: 45%;
+  height: 200px;
+  z-index: 1;
+  position: absolute;
+  left: -10px;
+  }
