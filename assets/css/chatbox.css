@@ -495,7 +495,6 @@ a {
   transform: scaleY(.5) translateY(50px);
   transform: all .9s;
   opacity: 0.5;
-  background: black;
 }
 .graph:hover{
   transform: scale(1) translateY(0);
@@ -506,6 +505,6 @@ a {
   width: 5%;
   height: 100%;
   padding: 0;
-  display: block;
-  float: left;
+  display: inline-block;
+  margin-right: -4px;
 }
