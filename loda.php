@@ -114,8 +114,8 @@ session_start();
 			<select class="sort_method">
 				<option value="1">Newest</option>
 				<option value="2" id="sort">Timestamp</option>
-
-			</select>>
+			</select>
+			<div id="mouseover" class="mouseover"></div>
 		</div>
 		<div class="chatbox_midbar" id="bg">
 			<div class="chatarea">
@@ -570,7 +570,7 @@ current_react:current_react
 	var n_btn = document.getElementById("submitpost");
 	var c_in = document.getElementsByClassName("topicy")[0];
 	var n_in = document.getElementsByClassName("topic")[0];
-
+	var mover = document.getElementById('mouseover')
 	if (loginuser=="empty1") {
 		alert("Wrong Username Or Password");
 	}
@@ -652,10 +652,20 @@ current_react:current_react
 			} else {
 				sign.style.display='none';
 			}
-
-
 		}
 	}
+
+		mover.addEventListener('mouseover',function(){
+			if (dd.style.opacity == "1"){
+				dd.style.opacity = "0";
+				dd.style.transform = "translateY(-10px)";
+				chat2.style.display='none';
+				note2.style.display='none';
+				log.style.display='none';
+				sign.style.display='none';
+			}
+		});
+
 	chat2.onclick = chat.onclick
 	note2.onclick = note.onclick
 	log.onclick = function(){
